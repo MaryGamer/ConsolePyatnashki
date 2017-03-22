@@ -1,0 +1,6 @@
+C:\Users\Влада\Documents\GitHub\ConsolePyatnashki\ConsolePyatnashki\ConsolePyatnashki\bin\Debug\ConsolePyatnashki.exe.config
+C:\Users\Влада\Documents\GitHub\ConsolePyatnashki\ConsolePyatnashki\ConsolePyatnashki\obj\Debug\ConsolePyatnashki.csprojResolveAssemblyReference.cache
+C:\Users\Влада\Documents\GitHub\ConsolePyatnashki\ConsolePyatnashki\ConsolePyatnashki\bin\Debug\ConsolePyatnashki.exe
+C:\Users\Влада\Documents\GitHub\ConsolePyatnashki\ConsolePyatnashki\ConsolePyatnashki\bin\Debug\ConsolePyatnashki.pdb
+C:\Users\Влада\Documents\GitHub\ConsolePyatnashki\ConsolePyatnashki\ConsolePyatnashki\obj\Debug\ConsolePyatnashki.exe
+C:\Users\Влада\Documents\GitHub\ConsolePyatnashki\ConsolePyatnashki\ConsolePyatnashki\obj\Debug\ConsolePyatnashki.pdb
