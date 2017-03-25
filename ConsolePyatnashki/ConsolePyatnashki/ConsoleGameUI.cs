@@ -10,19 +10,27 @@ namespace ConsolePyatnashki
     {
         IPlayable gmb;
 
-        public ConsoleGameUI(params int[] val)
+        public ConsoleGameUI(IPlayable game)
         {
-            gmb = new Game3(val);
+            gmb = game;
+            Console.WriteLine(string.Format("Тип игры определен как: {0}", gmb.GetType()));
         }
 
         public void Print()
         {
-            Console.WriteLine(string.Format("Ход № {0}", (gmb as Game3).NumTurns()));
-            for (int i = 0; i < (gmb as Game3).Length; i++)
+            if (gmb is Game3)
             {
-                for (int j = 0; j < (gmb as Game3).Length; j++)
+                Console.WriteLine(string.Format("Ход № {0}", (gmb as Game3).NumTurns()));
+            }
+            else
+            {
+                Console.WriteLine("Следующий ход");
+            }
+            for (int i = 0; i < (gmb as Game2).Length; i++)
+            {
+                for (int j = 0; j < (gmb as Game2).Length; j++)
                 {
-                    Console.Write(string.Format("{0}\t", (gmb as Game3)[i, j]));
+                    Console.Write(string.Format("{0}\t", (gmb as Game2)[i, j]));
                 }
                 Console.WriteLine();
             }
@@ -39,20 +47,33 @@ namespace ConsolePyatnashki
                 {
                     if (val < 0)
                     {
-                        (gmb as Game3).Reverse(val * -1);
+                        if (gmb is Game3)
+                        {
+                            Console.WriteLine(string.Format("Откат на {0} ходов назад", val * -1));
+                            (gmb as Game3).Reverse(val * -1);
+                        }
+                        else
+                            Console.WriteLine("Неверный ввод! (откат назад для Game2 не поддерживается");
                     }
                     else
                     {
                         gmb.Shift(val);
                     }
                 }
-                catch (Exception ex)  // перехватываем возможные ошибки в ходе  игры
+                catch (Exception ex)
                 {
                     Console.WriteLine(string.Format("Неправильный ход! {0}", ex.Message));
                 }
                 this.Print();
             }
-            Console.WriteLine("Поздравляем! Игра завершена за {0} ходов!", (gmb as Game3).NumTurns());
+            if (gmb is Game3)
+            {
+                Console.WriteLine("Поздравляем! Игра завершена за {0} ходов!", (gmb as Game3).NumTurns());
+            }
+            else
+            {
+                Console.WriteLine("Поздравляем! Игра завершена!");
+            }
         }
     }
 }

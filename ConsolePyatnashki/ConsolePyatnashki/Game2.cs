@@ -28,28 +28,6 @@ namespace ConsolePyatnashki
         {
             CheckIt(val);
 
-            #region старый код
-            //int size = (int)Math.Sqrt(val.Length);
-            //int[,] mas = new int[size, size];
-
-            //for (int i = 0; i < size; i++)
-            //{
-            //    for (int j = 0; j < size; j++)
-            //    {
-            //        mas[i, j] = val[i * size + j];
-            //    }
-            //}
-
-            //List<int> lst = new List<int>();
-            //for (int i = 0; i < size; i++)
-            //{
-            //    for (int j = 0; j < size; j++)
-            //    {
-            //        lst.Add(mas[i, j]);
-            //    }
-            //}
-            #endregion
-
             this.Inicialize(val);
             Randomize(10);
         }
