@@ -13,24 +13,17 @@ namespace ConsolePyatnashki
         public ConsoleGameUI(IPlayable game)
         {
             gmb = game;
-            Console.WriteLine(string.Format("Тип игры определен как: {0}", gmb.GetType()));
         }
 
         public void Print()
         {
-            if (gmb is Game3)
+            Console.WriteLine("Следующий ход");
+
+            for (int i = 0; i < gmb.Length; i++)
             {
-                Console.WriteLine(string.Format("Ход № {0}", (gmb as Game3).NumTurns()));
-            }
-            else
-            {
-                Console.WriteLine("Следующий ход");
-            }
-            for (int i = 0; i < (gmb as Game2).Length; i++)
-            {
-                for (int j = 0; j < (gmb as Game2).Length; j++)
+                for (int j = 0; j < gmb.Length; j++)
                 {
-                    Console.Write(string.Format("{0}\t", (gmb as Game2)[i, j]));
+                    Console.Write(string.Format("{0}\t", gmb[i, j]));
                 }
                 Console.WriteLine();
             }
@@ -45,35 +38,23 @@ namespace ConsolePyatnashki
 
                 try
                 {
-                    if (val < 0)
+                    if (val > 0)
                     {
-                        if (gmb is Game3)
-                        {
-                            Console.WriteLine(string.Format("Откат на {0} ходов назад", val * -1));
-                            (gmb as Game3).Reverse(val * -1);
-                        }
-                        else
-                            Console.WriteLine("Неверный ввод! (откат назад для Game2 не поддерживается");
+                        gmb.Shift(val);
+                        this.Print();
                     }
                     else
                     {
-                        gmb.Shift(val);
+                        Console.WriteLine("Неверный ввод. Повторите.");
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(string.Format("Неправильный ход! {0}", ex.Message));
                 }
-                this.Print();
+
             }
-            if (gmb is Game3)
-            {
-                Console.WriteLine("Поздравляем! Игра завершена за {0} ходов!", (gmb as Game3).NumTurns());
-            }
-            else
-            {
-                Console.WriteLine("Поздравляем! Игра завершена!");
-            }
+            Console.WriteLine("Поздравляем! Игра завершена!");
         }
     }
 }

@@ -13,5 +13,9 @@ namespace ConsolePyatnashki
         bool IsFinished { get; }
 
         void Shift(int value);
+
+        int Length { get; }
+
+        int this[int x, int y] { get; }
     }
 }
